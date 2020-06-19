@@ -63,16 +63,16 @@ public class MainActivity extends AppCompatActivity {
 
         calc.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                if (bill.getText().toString().equals("") || (fifteen.isChecked() == false && eighteen.isChecked() == false && twenty.isChecked() == false)) {
+                    tip.setText("N/A");
+                    return;
+                }
+
                 double amount = Double.parseDouble(bill.getText().toString());
                 int fifteen_calc = (int) (amount * .15);
                 int eighteen_calc = (int) (amount * .18);
                 int twenty_calc = (int) (amount * .2);
                 int result = 0;
-
-                if (bill.getText().toString().equals("") || (fifteen.isChecked() == false && eighteen.isChecked() == false && twenty.isChecked() == false)) {
-                    tip.setText("N/A");
-                    return;
-                }
 
                 if (fifteen.isChecked()) {
                     if (amount * .15 - fifteen_calc != 0) {
